@@ -18,4 +18,13 @@ def rovarsprak(F):
     Funktionen som dekoreras kan antas returnera textsträngar. Dessa översätts
     av decoratorn till rövarspråket.
     """
-    pass
+    data = F()
+    result = ''
+    vocal = ['a', 'e', 'i', 'o', 'u', 'å', 'ä', 'ö']
+    for letter in data:
+        if letter.lower() in vocal:
+            result = result + letter
+        else:
+            result = result + letter + 'o' + letter
+
+    return lambda: result

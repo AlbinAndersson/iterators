@@ -10,7 +10,17 @@ class Cubes():
     Talserien ska inte ha något slut.
 
     """
-    pass
+
+    def __init__(self):
+        """Init method."""
+        self.current = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.current += 1
+        return self.current ** 3
 
 
 class Primes():
@@ -19,7 +29,24 @@ class Primes():
     Talserien som förväntas börjar alltså: 2, 3, 5, 7, 11, 13, 17, 19, 23, ...
 
     """
-    pass
+    def __init__(self):
+        """Init method."""
+        self.current = 0
+        self.i = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.primtal = []
+        self.current += 1
+        self.i = range(0, self.current + 1)
+        for x in self.i:
+            if x % self.i != 0:
+                x.append(self.primtal)
+
+        return self.primtal
+        pass
 
 
 class Fibonacci():
@@ -31,7 +58,18 @@ class Fibonacci():
     Alltså börjar serien: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
 
     """
-    pass
+
+    def __init__(self):
+        """Init method."""
+        self.a = 0
+        self.b = 1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        c, self.a, self.b = self.a, self.b, self.a + self.b
+        return c
 
 
 class Alphabet():
@@ -42,8 +80,22 @@ class Alphabet():
 
     Alef, Bet, Gimel, Dalet, He, Vav, Zayin, Het, Tet, Yod, Kaf, Lamed, Mem,
     Nun, Samekh, Ayin, Pe, Tsadi, Qof, Resh, Shin, Tav
-
     """
+
+    def __init__(self):
+        """Init method."""
+        self.current = 0
+        self.names = 'Alef, Bet, Gimel, Dalet, He, Vav, Zayin, Het, Tet, Yod, Kaf, Lamed, Mem, Nun, Samekh, Ayin, Pe, Tsadi, Qof, Resh, Shin, Tav'.split(', ')  # NoQA
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current == len(self.names):
+            raise StopIteration
+        names = self.names[self.current]
+        self.current += 1
+        return names
 
 
 class Permutations():
