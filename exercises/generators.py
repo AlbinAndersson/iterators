@@ -59,6 +59,7 @@ def alphabet():
         if i == len(a):
             raise StopIteration
 
+
 def permutations(s):
     """En generator som returnerar alla permutationer av en inmatad sträng.
 
